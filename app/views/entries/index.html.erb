@@ -1,0 +1,36 @@
+<h1>Listing entries</h1>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Description</th>
+  </tr>
+
+<% @entries.each do |entry| %>
+  <tr>
+    <td><%=h entry.date %></td>
+    <td><%=h entry.description %></td>
+    <td><%= link_to 'Edit', edit_entry_path(entry) %></td>
+    <td><%= link_to 'Destroy', entry, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+  <% for transaction in entry.transactions %>
+	<tr>
+		<td></td>
+		<td><%= h transaction.account %></td>
+		<td><%= h transaction.amount %></td>
+	</tr>
+	<% end %>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New entry', new_entry_path %> <%= link_to "View as text", :action => "index", :format => :text%>
+
+<br />
+<br />
+
+<% form_tag({:action => :upload}, :multipart => true) do %>
+  <%= file_field_tag 'file' %>
+  <%= submit_tag 'Upload' %>
+<% end %>

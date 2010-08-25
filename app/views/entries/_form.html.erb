@@ -1,0 +1,37 @@
+<!-- Begin _form -->
+<% form_for(@entry) do |f| %>
+  <%= f.error_messages %>
+
+	<table>
+		<tr>
+			<td>
+				<%= f.label :date %><br/>
+				<%= f.text_field :date %>
+			</td>
+			<td>
+				<%= f.label :description %><br/>
+				<%= f.text_field :description %>
+		</tr>
+	</table>
+
+	<table id="transactions">
+		<tr>
+			<th>
+				Account
+			</th>
+			<th>
+				Amount
+			</th>
+		</tr>
+		<% f.fields_for :transactions do |transaction_form| %>
+			<%= render :partial => "transaction", :locals => { :f => transaction_form } %>
+		<% end %>
+	</table>
+	<p>
+		<%= add_child_link "Add a transaction", f, :transactions %>
+	</p>
+  <p>
+    <%= f.submit 'Save' %>
+  </p>
+<% end %>
+<!-- End _form -->
