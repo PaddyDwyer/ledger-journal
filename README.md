@@ -12,3 +12,10 @@ It's possible to output all your info in a text format which can be read by ledg
 * Edit individual entries
 * Copy an existing entry (Coming Soon)
 * Search entries (Coming Soon)
+
+## Installing on Heroku
+Download and install the app on heroku
+	git clone git://github.com/kertap/ledger-journal
+	cd ledger-journal
+	heroku create
+	git push heroku
