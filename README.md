@@ -18,4 +18,5 @@ Download and install the app on heroku
 	git clone git://github.com/kertap/ledger-journal
 	cd ledger-journal
 	heroku create
-	git push heroku
+	git push heroku master
+	heroku rake db:migrate
