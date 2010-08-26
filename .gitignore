@@ -1,2 +1,4 @@
-heroku_mock/
-tmp/
+vendor/plugins/heroku_mock/*
+tmp/*
+log/*
+*.sqlite3
