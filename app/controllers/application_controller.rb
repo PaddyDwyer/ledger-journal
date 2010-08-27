@@ -7,4 +7,16 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
+  
+  before_filter :require_login
+  
+  private
+      def require_login
+        logger.debug "login #{APP_CONFIG['perform_authentication']}"
+        if APP_CONFIG['perform_authentication']
+          unless heroku_user.logged_in?
+            redirect_to "/login.html"
+          end
+        end
+      end
 end
