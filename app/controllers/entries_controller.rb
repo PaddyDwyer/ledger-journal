@@ -44,7 +44,7 @@ class EntriesController < ApplicationController
   end
 
   def copy
-    @entry = Entry.find(params[:id])
+    @entry = Entry.find(params[:id]).deep_copy
   end
 
   # POST /entries

@@ -11,4 +11,13 @@ class Entry < ActiveRecord::Base
       transaction_text += " #{transaction.amount}\n"
     end.reduce{ |x, y| x + y}
   end
+  
+  def deep_copy()
+    copy = self.clone
+    copy.transactions = transactions.map do |transaction|
+      transaction.clone
+    end
+    logger.debug copy.transactions
+    return copy
+  end
 end
