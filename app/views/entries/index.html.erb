@@ -10,7 +10,9 @@
   <tr>
     <td><%=h entry.date %></td>
     <td><%=h entry.description %></td>
+	<td></td>
     <td><%= link_to 'Edit', edit_entry_path(entry) %></td>
+	<td><%= link_to 'Copy', copy_entry_path(entry) %></td>
     <td><%= link_to 'Destroy', entry, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
   <% for transaction in entry.transactions %>

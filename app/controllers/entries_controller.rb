@@ -43,6 +43,10 @@ class EntriesController < ApplicationController
     @entry = Entry.find(params[:id])
   end
 
+  def copy
+    @entry = Entry.find(params[:id]).deep_copy
+  end
+
   # POST /entries
   # POST /entries.xml
   def create
@@ -96,13 +100,13 @@ class EntriesController < ApplicationController
   end
   
   private
-  def get_max_transaction_length
-    @transactions = Transaction.all
-    max_length = 0
-    @transactions.each do |transaction|
-      max_length = transaction.account.length if transaction.account.length > max_length
+    def get_max_transaction_length
+      @transactions = Transaction.all
+      max_length = 0
+      @transactions.each do |transaction|
+        max_length = transaction.account.length if transaction.account.length > max_length
+      end
+      max_length += 4
     end
-    max_length += 4
-  end
   
 end
