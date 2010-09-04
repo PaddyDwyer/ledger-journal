@@ -7,7 +7,8 @@ module LedgerParser
         end_of_date = line =~ / /
         entry.date = line[0...end_of_date]
         rest_of_line = line[end_of_date..line.length].chomp
-        mycorp = /^\s+([*!])/.match(rest_of_line)[1]
+        mycorpMatch = /^\s+([*!])/.match(rest_of_line)
+        mycorp = mycorpMatch.nil? ? " " : mycorpMatch[1]
         entry.corp = case mycorp
           when "!": "p"
           when "*": "c"
@@ -18,12 +19,9 @@ module LedgerParser
       when /^\s+./
         transaction = entry.transactions.build
         line.sub!(/^\s+/, "")
-        Rails.logger.debug "line #{line}"
         to_dollar = line =~ /$/
         transaction.account = line[/^[^\-\$]*/].sub(/\s+$/, "")
-        Rails.logger.debug "account #{transaction.account}&"
         transaction.amount = line[/[\-\$].+/]
-        Rails.logger.debug "amount #{transaction.amount}&"
       else
         entry.save
       end
