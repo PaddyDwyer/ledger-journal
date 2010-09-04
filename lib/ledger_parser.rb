@@ -7,6 +7,12 @@ module LedgerParser
         end_of_date = line =~ / /
         entry.date = line[0...end_of_date]
         rest_of_line = line[end_of_date..line.length].chomp
+        mycorp = /^\s+([*!])/.match(rest_of_line)[1]
+        entry.corp = case mycorp
+          when "!": "p"
+          when "*": "c"
+          else      " "
+        end
         start_of_desc = /^[ *!]*/.match(rest_of_line)[0].length
         entry.description = rest_of_line[start_of_desc..line.length]
       when /^\s+./
