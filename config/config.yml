@@ -1,5 +1,5 @@
 development:
-  perform_authentication: true
+  perform_authentication: false
   user: user
   password: pass
 
