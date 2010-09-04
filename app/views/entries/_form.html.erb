@@ -9,6 +9,11 @@
 				<%= f.text_field :date %>
 			</td>
 			<td>
+				<br/>
+				<%= f.label :corp, "*", :value => "c" %> <%= f.radio_button :corp, "c" %>
+				<%= f.label :corp, "!", :value => "p" %> <%= f.radio_button :corp, "p" %>
+			</td>
+			<td>
 				<%= f.label :description %><br/>
 				<%= f.text_field :description %>
 		</tr>

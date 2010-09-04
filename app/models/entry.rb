@@ -3,7 +3,12 @@ class Entry < ActiveRecord::Base
   accepts_nested_attributes_for :transactions, :allow_destroy => true
   
   def render_text(max_length)
-    text = "#{date} #{description}\n"
+    mycorp = case corp
+      when "c": "*"
+      when "p": "!"
+      else      " "
+    end
+    text = "#{date} #{mycorp} #{description}\n"
     text += transactions.map do |transaction|
       length = transaction.account.length
       transaction_text = "    #{transaction.account}"
@@ -11,7 +16,7 @@ class Entry < ActiveRecord::Base
       transaction_text += " #{transaction.amount}\n"
     end.reduce{ |x, y| x + y}
   end
-  
+    
   def deep_copy()
     copy = self.clone
     copy.transactions = transactions.map do |transaction|
