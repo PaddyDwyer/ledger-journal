@@ -12,10 +12,9 @@ class ApplicationController < ActionController::Base
   
   private
       def require_login
-        logger.debug "login #{APP_CONFIG['perform_authentication']}"
         if APP_CONFIG['perform_authentication']
-          unless heroku_user.logged_in?
-            redirect_to "/login.html"
+          authenticate_or_request_with_http_basic do |username, password|
+            username == APP_CONFIG['user'] && password == APP_CONFIG["password"]
           end
         end
       end
