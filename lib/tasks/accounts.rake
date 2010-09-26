@@ -3,12 +3,13 @@ namespace :accounts do
 		print message
 		STDIN.gets.chomp
 	end
+	
 	desc "Add a new account"
-	task :add => :environment do
+	task :add, :username, :password, :needs => [:environment] do |t, args|
 		puts "Adding a new account"
 		u = User.new
-		u.login = ask("Please enter your username: ")
-		u.password = ask("Please enter your password: ")
+		u.login = args.username
+		u.password = args.password
 		if u.save
 			puts "Account created"
 		elsif
