@@ -1,12 +1,5 @@
 development:
-  perform_authentication: false
-  user: user
-  password: pass
 
 test:
-  perform_authentication: false
 
 production:
-  perform_authentication: true
-  user: user
-  password: pass
