@@ -3,3 +3,4 @@ tmp/*
 log/*
 *.sqlite3
 *.swp
+db/schema.rb
