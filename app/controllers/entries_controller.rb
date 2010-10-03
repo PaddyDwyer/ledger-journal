@@ -1,3 +1,4 @@
+require 'ledger_parser'
 class EntriesController < ApplicationController
   before_filter :require_user
   
