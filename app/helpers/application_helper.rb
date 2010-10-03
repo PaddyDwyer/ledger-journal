@@ -6,7 +6,7 @@ module ApplicationHelper
   
   def add_child_link(name, f, method)
     fields = new_child_fields(f, method)
-    link_to_function(name, h("insert_fields(this, \"#{method}\", \"#{escape_javascript(fields)}\")"))
+    link_to_function(name, "insert_fields(this, \"#{method}\", \"#{escape_javascript(fields)}\")")
   end
   
   def new_child_fields(form_builder, method, options = {})

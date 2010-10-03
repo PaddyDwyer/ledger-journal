@@ -1,6 +1,4 @@
-vendor/plugins/heroku_mock/*
-tmp/*
-log/*
-*.sqlite3
-*.swp
-db/schema.rb
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/**/*
