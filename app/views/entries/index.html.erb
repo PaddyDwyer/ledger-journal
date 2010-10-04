@@ -1,4 +1,23 @@
+<% content_for :head do %>
+  <style>
+	  .controls {
+		  margin-bottom: 10px;
+	  }
+  </style>
+<% end %>
 <h1>Listing entries</h1>
+
+<div class="controls">
+	<%= link_to 'New entry', new_entry_path %> <%= link_to "View as text", :action => "index", :format => :text%>
+
+	<br />
+	<br />
+
+	<%= form_tag({:action => :upload}, :multipart => true) do %>
+	<%= file_field_tag 'file' %>
+	<%= submit_tag 'Upload' %>
+	<% end %>
+</div>
 
 <table>
   <tr>
@@ -27,14 +46,3 @@
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New entry', new_entry_path %> <%= link_to "View as text", :action => "index", :format => :text%>
-
-<br />
-<br />
-
-<%= form_tag({:action => :upload}, :multipart => true) do %>
-  <%= file_field_tag 'file' %>
-  <%= submit_tag 'Upload' %>
-<% end %>
