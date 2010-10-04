@@ -7,7 +7,7 @@ class EntriesController < ApplicationController
   def index
 
     #@entries = Entry.find(:all, :include => :transactions)
-	@entries = Entry.includes(:transactions)
+	@entries = Entry.order('entries.date DESC').includes(:transactions)
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @entries }
