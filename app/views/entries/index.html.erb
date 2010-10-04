@@ -34,7 +34,7 @@
 <br />
 <br />
 
-<% form_tag({:action => :upload}, :multipart => true) do %>
+<%= form_tag({:action => :upload}, :multipart => true) do %>
   <%= file_field_tag 'file' %>
   <%= submit_tag 'Upload' %>
 <% end %>

@@ -1,5 +1,5 @@
 <!-- Begin _form -->
-<% form_for(@entry) do |f| %>
+<%= form_for(@entry) do |f| %>
   <%= f.error_messages %>
 
 	<table>
@@ -28,7 +28,7 @@
 				Amount
 			</th>
 		</tr>
-		<% f.fields_for :transactions do |transaction_form| %>
+		<%= f.fields_for :transactions do |transaction_form| %>
 			<%= render :partial => "transaction", :locals => { :f => transaction_form } %>
 		<% end %>
 	</table>
