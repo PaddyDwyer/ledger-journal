@@ -112,5 +112,9 @@ class EntriesController < ApplicationController
       end
       max_length += 4
     end
+
+    def single_access_allowed?
+      action_name == "index"
+    end
   
 end
