@@ -6,7 +6,8 @@ class EntriesController < ApplicationController
   # GET /entries.xml
   def index
 
-    @entries = Entry.find(:all, :include => :transactions)
+    #@entries = Entry.find(:all, :include => :transactions)
+	@entries = Entry.includes(:transactions)
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @entries }
