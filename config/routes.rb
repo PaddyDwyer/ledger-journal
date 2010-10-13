@@ -2,7 +2,11 @@ Journal::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
   resources :user_sessions
-  resource :account, :controller => "users"
+  resource :account, :controller => "users" do
+    member do
+      get 'ajaxreset'
+    end
+  end
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action

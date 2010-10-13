@@ -17,4 +17,16 @@ class UsersController < ApplicationController
       render :action => :edit
     end
   end
+
+  def ajaxreset
+    @user = @current_user
+    if @user.reset_single_access_token!
+      flash[:notice] = "New token generated"
+      render :update do |page|
+        page.replace_html 'sat', :partial => 'token', :object => @user
+      end
+    else
+      flash[:notice] = "Failed to create token"
+    end
+  end
 end

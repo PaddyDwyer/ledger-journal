@@ -5,7 +5,8 @@
 
 <p>
 <b>Single Access Token: </b>
-<%= @user.single_access_token %>
+<span id="sat"><%= render :partial => 'token'  %></span>
+<%= link_to 'Reset single access token', ajaxreset_account_path, :remote => true %>
 </p>
 
 <%= link_to 'Edit', edit_account_path %>
